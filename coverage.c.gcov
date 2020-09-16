@@ -1,0 +1,121 @@
+        -:    0:Source:coverage.c
+        -:    0:Graph:coverage.gcno
+        -:    0:Data:coverage.gcda
+        -:    0:Runs:2
+        -:    1:/*
+        -:    2: * C program to find whether triangle is possible
+        -:    3: * when 3 sides are given.
+        -:    4: * If possible, find its type.
+        -:    5: */
+        -:    6: 
+        -:    7:
+        -:    8:#include <stdio.h>
+        -:    9:
+        -:   10:/*
+        -:   11: * return 1 for right angle triangle
+        -:   12: * return 2 for equilateral triangle
+        -:   13: * return 3 for isoceles triangle
+        -:   14: * retrun 0 for scalene triangle
+        -:   15: */
+function findType called 1 returned 100% blocks executed 57%
+        1:   16:int findType (int a,int b, int c){
+        -:   17:	
+        1:   18:	int aSq = a*a;
+        1:   19:	int bSq = b*b;
+        1:   20:	int cSq = c*c;
+        -:   21:	
+        1:   22:	if(aSq + bSq == cSq || bSq + cSq == aSq || aSq + cSq == bSq)
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0%
+branch  4 taken 0% (fallthrough)
+branch  5 taken 100%
+    #####:   23:		return 1;
+        -:   24:	
+       1*:   25:	if(a == b && a == c)
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+branch  2 never executed
+branch  3 never executed
+    #####:   26:		return 2;
+        -:   27:	
+       1*:   28:	if((a == b && a != c) || (a == c && a != b))
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+branch  2 never executed
+branch  3 never executed
+branch  4 taken 0% (fallthrough)
+branch  5 taken 100%
+branch  6 never executed
+branch  7 never executed
+    #####:   29:		return 3;
+        -:   30:	
+        -:   31:	else	
+        1:   32:		return 0;		
+        -:   33:}
+        -:   34:
+function checkValidity called 2 returned 100% blocks executed 100%
+        2:   35:int checkValidity (int a ,int b, int c){
+        -:   36:	
+        2:   37:	if(a+b <= c || b+c <= a || a+c <=b )
+branch  0 taken 50% (fallthrough)
+branch  1 taken 50%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0%
+branch  4 taken 0% (fallthrough)
+branch  5 taken 100%
+        1:   38:		return 0;
+        -:   39:	else 
+        1:   40:		return 1;	
+        -:   41:}
+        -:   42:
+function main called 2 returned 100% blocks executed 81%
+        2:   43:int main(){
+        -:   44:
+        -:   45:	int a, b, c;
+        -:   46:	
+        2:   47:	printf("Enter the 3 sides of triangle: ");
+call    0 returned 100%
+        2:   48:	scanf("%d%d%d",&a,&b,&c);
+call    0 returned 100%
+        -:   49:	
+        2:   50:	int isValid = checkValidity(a,b,c);
+call    0 returned 100%
+        -:   51:	
+        2:   52:	if(isValid){
+branch  0 taken 50% (fallthrough)
+branch  1 taken 50%
+        1:   53:		int type = findType(a,b,c);
+call    0 returned 100%
+        -:   54:		
+        1:   55:		if(type == 1)
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   56:			printf("these edges form a right angle triangle");
+call    0 never executed
+        -:   57:		
+        1:   58:		else if(type == 2)
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   59:			printf("These edges form a equilateral triangle");
+call    0 never executed
+        -:   60:		
+        1:   61:		else if(type == 3)
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   62:			printf("Triangle formed is Isosceles triangle");
+call    0 never executed
+        -:   63:		
+        -:   64:		else 
+        1:   65:			printf("triangle is Scalene Triangle");			
+call    0 returned 100%
+        -:   66:	}
+        -:   67:
+        -:   68:	else 
+        1:   69:		printf("These edges don't form a triangle");
+call    0 returned 100%
+        2:   70:		printf("\n");
+call    0 returned 100%
+        2:   71:	return 0;
+        -:   72:}
